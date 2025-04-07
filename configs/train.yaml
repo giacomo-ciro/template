@@ -1,0 +1,40 @@
+# Entry-point config for scripts/train.py.
+defaults:
+  - _self_
+  - paths: local            # local
+  - dataset: RandomDataset  # RandomDataset
+  - model: MLP              # MLP
+  - scheduler: ConstantLR   # ConstantLR | OneCycleLR
+  - logger: null            # null | wandb | aim
+  - debug: null             # null | on
+  - sweep: null             # null | example
+
+run_name: train.yaml
+seed: 42
+
+datamodule:
+  split:              # keep the first N samples of each split (never reshuffled); -1 uses all
+    train: -1
+    val: -1
+    test: -1
+  batch_size: 32
+  num_workers: -1          # 0: main process | -1: all CPUs | N: N workers
+
+trainer:
+  max_steps: 1000
+  val_every_n_steps: 200   # validate (and checkpoint) every N optimizer steps
+  log_every_n_steps: 50
+  accumulate_grad_batches: 1
+  gradient_clip_val: null   # max gradient norm
+  enable_checkpointing: true
+
+optimizer:
+  lr: 1e-3
+  weight_decay: 0
+
+# >>>>>> hydra flags >>>>>>>>
+hydra:
+  run:
+    dir: ${paths.outputs}/hydra/run/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: ${paths.outputs}/hydra/multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}

@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "debugpy",
+            "request": "launch",
+            "name": "scripts/train.py",
+            "program": "${workspaceFolder}/scripts/train.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "justMyCode": true,
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "args": [
+                "debug=on",
+            ]
+        },
+    ]
+}

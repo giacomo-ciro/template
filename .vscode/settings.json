@@ -1,0 +1,52 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.analysis.typeCheckingMode": "off",
+    "python.analysis.include": [
+        "src",
+        "scripts"
+    ],
+    "python.analysis.exclude": [
+        "**/.git/**",
+        "**/node_modules/**",
+        "**/__pycache__/**",
+        "**/archive/**",
+        "**/third_party/**",
+        "**/data/**",
+        "**/outputs/**",
+        "**/.venv/**",
+        "**/.*"
+    ],
+    "python.analysis.diagnosticMode": "openFilesOnly",
+    "python.analysis.indexing": true,
+    "python.analysis.useLibraryCodeForTypes": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "search.exclude": {
+        "**/archive/**": true,
+        "**/data/**": true,
+        "**/outputs/**": true,
+        "**/.venv/**": true
+    },
+    "files.watcherExclude": {
+        "**/.git/**": true,
+        "**/.pytest_cache/**": true,
+        "**/.venv/**": true,
+        "**/.ruff_cache/**": true,
+        "**/__pycache__/**": true,
+        "**/*.egg-info/**": true,
+        "**/data/**": true,
+        "**/outputs/**": true,
+        "**/hydra/**": true,
+        "**/tmp/**": true,
+        "**/wandb/**": true,
+        "**/lightning_logs/**": true,
+        "**/checkpoints/**": true,
+        "**/build/**": true,
+    },
+    "python.analysis.extraPaths": [
+        "./third_party/"
+    ]
+}

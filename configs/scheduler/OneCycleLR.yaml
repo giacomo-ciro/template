@@ -1,0 +1,5 @@
+name: OneCycleLR             # peaks at optimizer.lr
+pct_start: 0.1               # fraction of steps spent ramping up LR
+anneal_strategy: cos         # "cos" or "linear" decay after peak
+div_factor: 25.0             # initial_lr = max_lr / div_factor
+final_div_factor: 10000.0    # final_lr  = initial_lr / final_div_factor

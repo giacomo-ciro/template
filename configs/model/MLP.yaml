@@ -1,0 +1,5 @@
+# without "global", this lives in cfg.model.*
+_target_: template.model.MLP
+in_dim: ${dataset.in_dim}
+out_dim: ${dataset.out_dim}
+hidden_dim: 128

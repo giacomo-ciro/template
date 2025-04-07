@@ -1,0 +1,17 @@
+# @package _global_
+
+# Merges this file at the config root, so it can override any key.
+
+# Run it with --multirun:
+#   python scripts/train.py -m sweep=example
+
+# Equivalent one-off sweep from the CLI, no config file needed:
+#   python scripts/train.py --multirun model.hidden_dim=64,128,256
+
+# Multiple params are swept as a cartesian product.
+
+hydra:
+  sweeper:
+    params:
+      model.hidden_dim: 64,128,256
+      seed: 0,1

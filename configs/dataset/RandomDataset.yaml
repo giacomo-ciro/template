@@ -1,0 +1,4 @@
+_target_: template.dataset.RandomDataset
+num_samples: 1000   # per split
+in_dim: 16
+out_dim: 1

@@ -1,0 +1,3 @@
+name: wandb
+project: template
+entity: null   # wandb user or team; null uses your default entity

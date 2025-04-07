@@ -1,0 +1,65 @@
+[project]
+name = "template"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aim",
+    "hydra-core",
+    "lightning",
+    "matplotlib",
+    "omegaconf",
+    "rich",
+    "wandb",
+    # "third_party_repo"
+]
+
+[dependency-groups]
+dev = ["ipykernel", "ruff"]
+cpu = ["torch", "torchvision"]
+gpu = ["torch", "torchvision"]
+
+[tool.uv]
+conflicts = [
+  [
+    { group = "cpu" },
+    { group = "gpu" },
+  ],
+]
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cpu", group = "cpu" },
+  { index = "pytorch-cu130", group = "gpu" },
+]
+torchvision = [
+  { index = "pytorch-cpu", group = "cpu" },
+  { index = "pytorch-cu130", group = "gpu" },
+]
+# to install third parties
+# third_party_repo = { path = "third_party/third_party_repo", editable = true }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"  # match system CUDA (cu128 / cu118 etc.)
+explicit = true
+
+[tool.ruff]
+extend-exclude = [
+    "third_party",
+    "notebooks",
+    "archive"
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"] # install every package inside src/
